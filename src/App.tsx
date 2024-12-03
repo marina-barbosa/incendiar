@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/header";
 import { ProductDetails } from "./components/productDetails";
 import Home from "./pages/home";
+import Account from "./pages/account";
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/account" element={<Account />} />
             {/* <Route path="/products/:category" element={<Products />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/account" element={<Account />} /> */}
+            <Route path="/cart" element={<Cart />} /> */}
           </Routes>
         </main>
       </div>
