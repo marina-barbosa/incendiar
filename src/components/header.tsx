@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { LiaGripfire } from "react-icons/lia";
 import { LuUser } from "react-icons/lu";
-import { BsCart } from "react-icons/bs";
+import { BsCart2 } from "react-icons/bs";
 import Button from "./button";
 
 const Header = () => {
@@ -42,7 +42,7 @@ const Header = () => {
             <Link to="/cart">
               <Button variant="outline" size="sm" className="relative">
                 {/* CART */}
-                <BsCart className="h-5 w-5" />
+                <BsCart2 className="h-5 w-5" />
                 <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   0
                 </span>
