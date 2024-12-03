@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header";
 import Hero from "./pages/hero";
+import { ProductGrid } from "./components/productGrid";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/account" element={<Account />} /> */}
           </Routes>
+          <ProductGrid />
         </main>
       </div>
     </Router>
