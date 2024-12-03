@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header";
-import Hero from "./pages/hero";
-import { ProductGrid } from "./components/productGrid";
+import { ProductDetails } from "./components/productDetails";
+import Home from "./pages/home";
 
 function App() {
   return (
@@ -11,12 +11,12 @@ function App() {
         <Header />
         <main className="pt-16">
           <Routes>
-            <Route path="/" element={<Hero />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
             {/* <Route path="/products/:category" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/account" element={<Account />} /> */}
           </Routes>
-          <ProductGrid />
         </main>
       </div>
     </Router>
