@@ -11,4 +11,20 @@
 
 html,body{
   height: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Estilo geral para a barra de rolagem */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #0f0f11;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ea4b1e;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px; 
 }
