@@ -1,55 +1,38 @@
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import type React from 'react';
+import type { IconType } from 'react-icons';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline";
-  size?: "sm" | "md" | "lg";
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'social';
+  icon?: IconType;
+  fullWidth?: boolean;
+  children: React.ReactNode;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className = "", variant = "primary", size = "md", ...props }, ref) => {
-    const baseClasses =
-      "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50";
-    let variantClasses = "";
-    let sizeClasses = "";
+export const Button = ({
+  variant = 'primary',
+  icon: Icon,
+  fullWidth = false,
+  children,
+  className = '',
+  ...props
+}: ButtonProps) => {
+  const baseStyles = 'flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105';
+  
+  const variants = {
+    primary: 'bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700',
+    secondary: 'bg-gray-800 text-white hover:bg-gray-700',
+    outline: 'border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
+    ghost: 'text-gray-400 hover:text-orange-500',
+    social: 'bg-gray-800 text-white hover:bg-gray-700 w-full'
+  };
 
-    switch (variant) {
-      case "primary":
-        variantClasses =
-          "bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700";
-        break;
-      case "secondary":
-        variantClasses = "bg-zinc-900 text-white hover:bg-zinc-800";
-        break;
-      case "outline":
-        variantClasses =
-          "border border-zinc-200 bg-white hover:bg-zinc-100 hover:text-zinc-900";
-        break;
-      default:
-        break;
-    }
-
-    switch (size) {
-      case "sm":
-        sizeClasses = "h-8 px-3 text-sm";
-        break;
-      case "md":
-        sizeClasses = "h-10 px-4";
-        break;
-      case "lg":
-        sizeClasses = "h-12 px-6 text-lg";
-        break;
-      default:
-        break;
-    }
-
-    const combinedClasses = `${baseClasses} ${variantClasses} ${sizeClasses} ${className}`.trim();
-
-    return (
-      <button ref={ref} className={combinedClasses} {...props} />
-    );
-  }
-);
-
-Button.displayName = "Button";
-
-export default Button;
+  return (
+    <button
+      className={`${baseStyles} ${variants[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
+      {...props}
+    >
+      {Icon && <Icon className="h-5 w-5" />}
+      {children}
+    </button>
+  );
+};

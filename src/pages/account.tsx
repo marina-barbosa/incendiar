@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import { useAuthStore } from '../store/authStore';
-import Button from "../components/button";
+import Button from "../components/my-button";
 import CustomButton from "../components/customButton";
 import { FcGoogle } from "react-icons/fc";
 import { BiLogInCircle } from "react-icons/bi";
@@ -84,7 +84,7 @@ const Account = () => {
         </form>
         <p className="mt-4 text-center text-gray-400">
           {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
-          <button
+          <button type="button"
             onClick={() => setIsSignUp(!isSignUp)}
             className="text-orange-500 hover:text-orange-400"
           >
